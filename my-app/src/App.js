@@ -7,17 +7,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Welcome to Image Quiz App!</h1>
+        <form action="/action_page.php">
+          <label for="fname">Username</label> &nbsp;
+          <input type="text" id="fname" name="fname"/> &nbsp;
+          <label for="lname">Password</label> &nbsp;
+          <input type="password" id="lname" name="lname"/><br/><br/>
+          <input type="submit" value="Log In"/>
+      </form> 
+      <button id="signUp">Sign Up</button>
       </header>
     </div>
   );
