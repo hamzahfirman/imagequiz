@@ -43,7 +43,7 @@ class HomePage extends React.Component {
     if(!(this.state.authenticated) && this.state.showLoginForm){
       return(
           <div>
-            <form onSubmit={this.logInSubmit}>
+          <form onSubmit={this.logInSubmit}>
               <label for="username">Username</label> &nbsp;
               <input type="text" id="username" 
               value={this.state.username} 
@@ -56,19 +56,19 @@ class HomePage extends React.Component {
           </div>
       );
 
-    }else if(this.state.authenticated && this.state.showLoginForm){
-        return (
-          <div>
-            Hello World
-          </div>
-        );
+    // }else if(this.state.authenticated && this.state.showLoginForm){
+    //     return (
+    //       <div>
+    //         Hello World
+    //       </div>
+    //     );
     }else{
       return (
         <div className="Home">
           <header className="App-header">
             <h1>Welcome to Image Quiz App!</h1>
-            <button id="login" onClick={this.login}>Log in</button>
-            <button id="signUp" onClick={this.signUp}>Sign Up</button>
+            {this.state.authenticated ? this.state.username :  
+            <button id="login" onClick={this.login}>Log in</button>}
           </header>
         </div>
       );
