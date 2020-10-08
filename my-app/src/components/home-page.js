@@ -55,14 +55,7 @@ class HomePage extends React.Component {
             </form>
           </div>
       );
-
-    // }else if(this.state.authenticated && this.state.showLoginForm){
-    //     return (
-    //       <div>
-    //         Hello World
-    //       </div>
-    //     );
-    }else{
+      }else{
       return (
         <div className="Home">
           <header className="App-header">
