@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Home.css';
 class HomePage extends React.Component {
   // State of this component
   constructor(props) {
@@ -59,9 +59,9 @@ class HomePage extends React.Component {
       return (
         <div className="Home">
           <header className="App-header">
-            <h1>Welcome to Image Quiz App!</h1>
+            <p>Welcome to Image Quiz App!</p>
             {this.state.authenticated ? this.state.username :  
-            <button id="login" onClick={this.login}>Log in</button>}
+            <button id="login" className="loginButton" onClick={this.login}>Log in</button>}
           </header>
         </div>
       );
