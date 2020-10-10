@@ -48,10 +48,8 @@ class HomePage extends React.Component {
               <input type="text" id="username" 
               value={this.state.username} 
               onChange={this.hadleChange} 
-              name="username"/> &nbsp;
-              <label for="password">Password</label> &nbsp;
-              <input type="password" id="password" name="password"/><br/><br/>
-              <button type="submit" id="loginNow">Login</button>
+              name="username"/>  
+              <button type="submit" className="loginButton" id="loginNow">Login</button>
             </form>
           </div>
       );
@@ -59,8 +57,8 @@ class HomePage extends React.Component {
       return (
         <div className="Home">
           <header className="App-header">
-            <p>Welcome to Image Quiz App!</p>
-            {this.state.authenticated ? this.state.username :  
+            Welcome to Image Quiz App!
+            {this.state.authenticated ?<p className="username"> {this.state.username}</p> : 
             <button id="login" className="loginButton" onClick={this.login}>Log in</button>}
           </header>
         </div>
