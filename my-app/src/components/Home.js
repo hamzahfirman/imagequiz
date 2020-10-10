@@ -58,7 +58,7 @@ class HomePage extends React.Component {
         <div className="Home">
           <header className="App-header">
             Welcome to Image Quiz App!
-            {this.state.authenticated ?<p className="username"> {this.state.username}</p> : 
+            {this.state.authenticated ? this.state.username: 
             <button id="login" className="loginButton" onClick={this.login}>Log in</button>}
           </header>
         </div>
