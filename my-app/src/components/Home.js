@@ -43,24 +43,24 @@ class HomePage extends React.Component {
     if(!(this.state.authenticated) && this.state.showLoginForm){
       return(
           <div>
-          <form onSubmit={this.logInSubmit}>
+          <form className="loginNow" onSubmit={this.logInSubmit}>
               <label for="username">Username</label> &nbsp;
               <input type="text" id="username" 
               value={this.state.username} 
               onChange={this.hadleChange} 
               name="username"/>  
-              <button type="submit" className="loginButton" id="loginNow">Login</button>
+              <button type="submit" id="loginNow">Login</button>
             </form>
           </div>
       );
       }else{
       return (
         <div className="Home">
-          <header className="App-header">
+          <div className="loginButton">
+              {this.state.authenticated ? this.state.username: 
+              <button id="login" className="loginButton" onClick={this.login}>Log in</button>}
+          </div>
             Welcome to Image Quiz App!
-            {this.state.authenticated ? this.state.username: 
-            <button id="login" className="loginButton" onClick={this.login}>Log in</button>}
-          </header>
         </div>
       );
     }
