@@ -25,17 +25,28 @@ class Home extends React.Component {
         }
       }
     }
-
-    return (
-      <div className="Home">
-        <div className="loginButton">
-            {username.length > 0 ? username: 
-            <Link to='/login'>Login</Link>}
+    if(username.length > 0){
+      return(
+        <div>
+          <div className="loginButton">
+          {username}
+          </div>
+              Welcome to Image Quiz App Homepage!
+              <Images />
         </div>
-          Welcome to Image Quiz App Homepage!
-          <Images />
-      </div>
-    );
+      );
+      }else{
+        return (
+          <div className="Home">
+      
+            <div className="loginButton">
+                {username.length > 0 ? username: 
+                <Link to='/login'>Login</Link>}
+            </div>
+              Welcome to Image Quiz App Homepage!
+          </div>
+        );
+    }
   }
 };
 
