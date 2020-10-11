@@ -13,8 +13,13 @@ function App() {
   return (
    <BrowserRouter>
     <Switch>
-      <Route exact path='/'>
-        <Home />
+      {/* 
+      Passes props source to the desired destination. Also
+      '...' means concatination the passed in props with the 
+      props in the Homepage 
+      */}
+
+      <Route exact path='/' render={ props => <Home {...props}/>}>
       </Route>
       <Route path='/login'>
         <Login />
