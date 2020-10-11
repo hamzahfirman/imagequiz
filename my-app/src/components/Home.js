@@ -13,17 +13,27 @@ class Home extends React.Component {
 
   // Render function: What user see on'Homepage'
   render() {
-
-      return (
-        <div className="Home">
-          <div className="loginButton">
-              {this.state.authenticated ? this.state.username: 
-              <Link to='/login'>Login</Link>}
-          </div>
-            Welcome to Image Quiz App Homepage!
-        </div>
-      );
+    // Capturing the passed in data from 'Login' component
+    let username = '';
+    const location = this.props.location;
+    if(location) {
+      if(location.state){
+        if(location.state.user){
+          username = location.state.user;
+        }
+      }
     }
+
+    return (
+      <div className="Home">
+        <div className="loginButton">
+            {username.length > 0 ? username: 
+            <Link to='/login'>Login</Link>}
+        </div>
+          Welcome to Image Quiz App Homepage!
+      </div>
+    );
+  }
 };
 
 export default Home;
