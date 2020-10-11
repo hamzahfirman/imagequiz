@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import './Login.css';
 
 class Login extends React.Component {
     // State of this component
@@ -48,7 +49,7 @@ class Login extends React.Component {
         return (
             <div>
                 <form className="loginNow" onSubmit={this.logInSubmit}>
-                    <label for="username">Username:</label> &nbsp;
+                    <label for="username">Username:</label>
                     <input
                         type="text"
                         value={this.state.username}
