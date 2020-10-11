@@ -1,6 +1,8 @@
 import React from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
+/* Other Components */
+import Images from './Images';
 class Home extends React.Component {
   // State of this component
   constructor(props) {
@@ -31,6 +33,7 @@ class Home extends React.Component {
             <Link to='/login'>Login</Link>}
         </div>
           Welcome to Image Quiz App Homepage!
+          <Images />
       </div>
     );
   }
