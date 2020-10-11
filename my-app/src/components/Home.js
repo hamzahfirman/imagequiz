@@ -1,70 +1,29 @@
 import React from 'react';
 import './Home.css';
-class HomePage extends React.Component {
+import { Link } from 'react-router-dom';
+class Home extends React.Component {
   // State of this component
   constructor(props) {
     super(props);
     // State is an object
     this.state = {
-        username: '',
-        showLoginForm: false,
-        authenticated: false
+        username: ''    
     };
-  }
-  // Events
-  login = () => {
-    this.setState({
-      showLoginForm: true
-    });
-  }
-  // Submit 
-  logInSubmit = (event) => {
-    if(this.state.username.trim().length > 0){
-      //Let them into the Homepage
-      this.setState({
-        authenticated: true
-      });
-    }
-    event.preventDefault();
+  };
 
-  }
-  hadleChange= (event) => {
-    const value = event.target.value;
-    const name = event.target.name;
-    // Changes the username
-    this.setState({
-      [name]: value
-    });
-  }
   // Render function: What user see on'Homepage'
   render() {
 
-    // CONDITION: If the login button gets clicked
-    if(!(this.state.authenticated) && this.state.showLoginForm){
-      return(
-          <div>
-          <form className="loginNow" onSubmit={this.logInSubmit}>
-              <label for="username">Username</label> &nbsp;
-              <input type="text" id="username" 
-              value={this.state.username} 
-              onChange={this.hadleChange} 
-              name="username"/>  
-              <button type="submit" id="loginNow">Login</button>
-            </form>
-          </div>
-      );
-      }else{
       return (
         <div className="Home">
           <div className="loginButton">
               {this.state.authenticated ? this.state.username: 
-              <button id="login" className="loginButton" onClick={this.login}>Log in</button>}
+              <Link to='/login'>Login</Link>}
           </div>
-            Welcome to Image Quiz App!
+            Welcome to Image Quiz App Homepage!
         </div>
       );
     }
-  }
 };
 
-export default HomePage;
+export default Home;
