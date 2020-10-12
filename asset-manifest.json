@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.894adea1.chunk.css",
-    "main.js": "/static/js/main.e4d0f5a1.chunk.js",
-    "main.js.map": "/static/js/main.e4d0f5a1.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.83c3e0c4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.83c3e0c4.js.map",
-    "static/js/2.611d46d0.chunk.js": "/static/js/2.611d46d0.chunk.js",
-    "static/js/2.611d46d0.chunk.js.map": "/static/js/2.611d46d0.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.b5c2f5971d41f7ec02f97b7c1823d8b9.js": "/precache-manifest.b5c2f5971d41f7ec02f97b7c1823d8b9.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.894adea1.chunk.css.map": "/static/css/main.894adea1.chunk.css.map",
-    "static/js/2.611d46d0.chunk.js.LICENSE.txt": "/static/js/2.611d46d0.chunk.js.LICENSE.txt",
-    "static/media/cherryblossom.png": "/static/media/cherryblossom.b610ae10.png",
-    "static/media/daffodil.png": "/static/media/daffodil.88848efd.png",
-    "static/media/rose.png": "/static/media/rose.6f79caeb.png",
-    "static/media/sunflower.png": "/static/media/sunflower.adc45e53.png",
-    "static/media/tulip.png": "/static/media/tulip.f9a3f0da.png",
-    "static/media/waterlily.png": "/static/media/waterlily.fca50ba1.png"
+    "main.css": "/imagequiz/static/css/main.894adea1.chunk.css",
+    "main.js": "/imagequiz/static/js/main.75ab6370.chunk.js",
+    "main.js.map": "/imagequiz/static/js/main.75ab6370.chunk.js.map",
+    "runtime-main.js": "/imagequiz/static/js/runtime-main.542f2801.js",
+    "runtime-main.js.map": "/imagequiz/static/js/runtime-main.542f2801.js.map",
+    "static/js/2.611d46d0.chunk.js": "/imagequiz/static/js/2.611d46d0.chunk.js",
+    "static/js/2.611d46d0.chunk.js.map": "/imagequiz/static/js/2.611d46d0.chunk.js.map",
+    "index.html": "/imagequiz/index.html",
+    "precache-manifest.4c4430203c75ec7f9b68bd96aaadbacb.js": "/imagequiz/precache-manifest.4c4430203c75ec7f9b68bd96aaadbacb.js",
+    "service-worker.js": "/imagequiz/service-worker.js",
+    "static/css/main.894adea1.chunk.css.map": "/imagequiz/static/css/main.894adea1.chunk.css.map",
+    "static/js/2.611d46d0.chunk.js.LICENSE.txt": "/imagequiz/static/js/2.611d46d0.chunk.js.LICENSE.txt",
+    "static/media/cherryblossom.png": "/imagequiz/static/media/cherryblossom.b610ae10.png",
+    "static/media/daffodil.png": "/imagequiz/static/media/daffodil.88848efd.png",
+    "static/media/rose.png": "/imagequiz/static/media/rose.6f79caeb.png",
+    "static/media/sunflower.png": "/imagequiz/static/media/sunflower.adc45e53.png",
+    "static/media/tulip.png": "/imagequiz/static/media/tulip.f9a3f0da.png",
+    "static/media/waterlily.png": "/imagequiz/static/media/waterlily.fca50ba1.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.83c3e0c4.js",
+    "static/js/runtime-main.542f2801.js",
     "static/js/2.611d46d0.chunk.js",
     "static/css/main.894adea1.chunk.css",
-    "static/js/main.e4d0f5a1.chunk.js"
+    "static/js/main.75ab6370.chunk.js"
   ]
 }
