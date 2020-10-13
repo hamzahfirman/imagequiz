@@ -31,7 +31,7 @@ class Home extends React.Component {
           <div className="loginButton">
           {username}
           </div>
-              Welcome to Image Quiz App Homepage!
+              Welcome to Image Quiz App Homepage!!
               <Images />
         </div>
       );
@@ -43,7 +43,7 @@ class Home extends React.Component {
                 {username.length > 0 ? username: 
                 <Link to='/login'>Login</Link>}
             </div>
-              Welcome to Image Quiz App Homepage!
+              Welcome to Image Quiz App Homepage!!
           </div>
         );
     }
