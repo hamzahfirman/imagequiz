@@ -13,6 +13,14 @@ class Home extends React.Component {
     };
   };
 
+  body = (aName) => {
+    return( 
+      <div>
+          Hey, {aName}. Welcome to Image Quiz App Homepage!
+      </div>
+  );
+  }
+
   // Render function: What user see on'Homepage'
   render() {
     // Capturing the passed in data from 'Login' component
@@ -25,13 +33,14 @@ class Home extends React.Component {
         }
       }
     }
+    {/* A user has been logged in to the website */}
     if(username.length > 0){
       return(
         <div>
           <div className="loginButton">
           {username}
           </div>
-              Welcome to Image Quiz App Homepage!!
+              {this.body(username)}
               <Images />
         </div>
       );
@@ -43,7 +52,7 @@ class Home extends React.Component {
                 {username.length > 0 ? username: 
                 <Link to='/login'>Login</Link>}
             </div>
-              Welcome to Image Quiz App Homepage!!
+              Welcome to Image Quiz App Homepage!
           </div>
         );
     }
