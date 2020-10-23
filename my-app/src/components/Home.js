@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import server from '../ServerInterface/server';
 /* Other Components */
 import Images from './Images';
+import Entry from './Entry';
 
 class Home extends React.Component {
   // State of this component
@@ -29,15 +30,21 @@ class Home extends React.Component {
     // const entries  = this.state.entries; 
     // const cursor = this.state.cursor;
     return( 
+      // 'Entry' component responsible for giving the entries
+      // and pass entries 
       <div>
-      {/* {entries.length > 0} ? <Entry entry={entries[cursor]}/> */}
+      {entries.length > 0 ? 
+      <Entry entry={entries[cursor]}/> : " "}
           Hey, {aName}. Welcome to Image Quiz App Homepage!
       </div>
   );
   }
-
+// This function will be executed after everything gets loaded in the DOM.
+// After 'render()' executed 
   componentDidMount() {
+    // 'entries' - Calls a function 'fecthEntries()' in server.js component
     const entries = server.fetchEntries();
+    // Passes a list of objects/ entries frome entries.js
     this.setState({entries: entries});
   }
 
@@ -45,6 +52,8 @@ class Home extends React.Component {
   render() {
     // Capturing the passed in data from 'Login' component
     let username = '';
+    // 'location' - All of the passed in data from other components will
+    // be stored here in the 'location' method by props.
     const location = this.props.location;
     if(location) {
       if(location.state){

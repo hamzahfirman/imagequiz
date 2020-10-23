@@ -3,10 +3,6 @@ import entries from './entries';
 // A Function that will fecth all entries
 let getEntries = () => {
     // Later On: We will connect to a backend and fetch all the entries from it. 
-
-    let entries = [
-        {}
-    ];
     return entries;
 }
 
