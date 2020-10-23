@@ -8,7 +8,7 @@ let getEntries = () => {
 
 // Object 
 let server = {
-    fetchEntries: getEntries 
+    fetchEntries: getEntries
 };
 
 export default server;

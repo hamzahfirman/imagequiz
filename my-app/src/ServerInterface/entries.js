@@ -1,10 +1,20 @@
 let entries = [
-    {name: 'develop' ,
+    {name: "develop" ,
      origin: '(Latin) dis + envelop. ("dis" = in-)',
      meanings: [
          {type: 'verb',
          meaning: 'become more advanced, mature or elaborate '
               }
         ]
-    }
+    },
+    {name: 'develop' ,
+    origin: '(Latin) dis + envelop. ("dis" = in-)',
+    meanings: [
+        {type: 'verb',
+        meaning: 'become more advanced, mature or elaborate '
+             }
+       ]
+   }
 ];
+
+export default entries;

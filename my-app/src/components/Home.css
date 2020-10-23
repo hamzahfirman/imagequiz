@@ -4,6 +4,7 @@ body{
  color:darkslateblue;
  font-family:Verdana, Geneva, Tahoma, sans-serif;
  text-shadow: 1px 1px hsl(0, 100%, 50%);
+
 }
 .loginButton {
    float:right;
@@ -14,4 +15,5 @@ body{
 .Home{
     text-align: left;
 }
+
 
