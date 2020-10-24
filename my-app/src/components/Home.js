@@ -50,8 +50,7 @@ class Home extends React.Component {
       // and pass entries 
       <div>
       Hey, {aName}. Welcome to Image Quiz App Homepage!
-      {entries.length > 0 ? 
-        <Entry entry={entries[cursor]}/> : " "}
+
       </div>
   );
   }
@@ -113,5 +112,7 @@ componentWillUnmount(){
     }
   }
 };
+// {entries.length > 0 ? 
+//   <Entry entry={entries[cursor]}/> : " "}
 
 export default Home;

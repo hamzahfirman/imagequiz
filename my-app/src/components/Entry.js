@@ -5,7 +5,17 @@ import './Entry.css'
 
 class Entry extends React.Component {
     render() {
-        const { entry } = this.props;
+        let name = "";
+
+        const location = this.props.location;
+        if(location) {
+          if(location.state){
+            if(location.state.flowerName){
+             name = location.state.flowerName;
+            }
+          }
+        }
+        // const { entry } = this.props;
         /* 
             Show the entries 
             that we received from Home
@@ -13,8 +23,8 @@ class Entry extends React.Component {
         return(
             <div>
                 <div className="allEntries">
-                    <div>{entry.name}</div>
-                    <div>{entry.origin}</div>
+                    <div>Hello World {name}</div>
+               
                 </div>
             </div>
         );

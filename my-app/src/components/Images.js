@@ -30,7 +30,7 @@ class Images extends React.Component {
         this.setState({
             flowerName: name
         });
-        
+
         // alert(name);
     }
     /* FUNCTION: Returns a row with 4 columns of pictures   */
@@ -47,6 +47,12 @@ class Images extends React.Component {
     }
    
     render(){
+        if(this.state.flowerName.length > 0){
+            let from = { pathname: '/entry', state: { flowerName: this.state.flowerName } }
+            return (
+                <Redirect to={from} />
+             );
+        }
         return(
             <div>
             <table className="tableFlowers" >
@@ -57,12 +63,6 @@ class Images extends React.Component {
 
 }
 
-// handleClick = (event) => {
-//     let from = { pathname: '/entry'}
-//     return (
-//         <Redirect to={from} />
-//     );
-// }
 
 class Flower {
     constructor(name, pictureName) {
