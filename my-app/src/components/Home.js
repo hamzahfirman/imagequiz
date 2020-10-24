@@ -18,6 +18,24 @@ class Home extends React.Component {
     };
   };
 
+  // NOTES: Once the event listener is executed below, it will 
+  // send an object that tells what event has happened 
+  // For instance, it can tell you what key was pressed
+  handleKeyDown = (e) => {
+    // Deconstruction:
+    const { cursor, entries } = this.state;
+
+    if(e.keyCode === 39 && (cursor < entries.length -1)){ // Right arrow key 
+      // Increment the cursor key in the state in order to move 
+      // to the next word (right)
+      this.setState({cursor: cursor + 1});
+    } else if (e.keyCode ==  37 && (cursor > 0)) {  // Left arrow key
+      // Decrement the cursor key in the state in order to move 
+      // to the previous word (left)
+      this.setState({cursor: cursor - 1});
+    }
+  }
+
   body = (aName) => {
     /* 
     Desconstruct an object
@@ -44,8 +62,18 @@ componentDidMount() {
     const entries = server.fetchEntries();
     // Passes a list of objects/ entries frome entries.js
     this.setState({entries: entries});
+    // Once the user pressed 
+    // Also, it is placed in this component because 'window' object 
+    // only available after 'render()' object gets render.
+    window.addEventListener("keydown", this.handleKeyDown);
   }
+// Will be executed right before the page gets destroyed 
+componentWillUnmount(){
+  // This will remove the current event listener in 'componentDidMount()'
+  // right before the page gets detroyed 
+  window.removeEventListener("keydown", this.handleKeyDown);
 
+}
   // Render function: What user see on'Homepage'
   render() {
     // Capturing the passed in data from 'Login' component
