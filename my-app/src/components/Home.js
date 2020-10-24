@@ -96,7 +96,7 @@ componentWillUnmount(){
           {username}
           </div>
               {this.body(username)}
-              {/* <Images /> */}
+              <Images />
         </div>
       );
       }else{

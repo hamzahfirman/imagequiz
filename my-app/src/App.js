@@ -8,6 +8,7 @@ import {
 //Components
 import Home from './components/Home';
 import Login from './components/Login';
+import Entry from './components/Entry';
 
 /* 
       Passes props source to the desired destination. Also
