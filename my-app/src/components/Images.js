@@ -24,7 +24,8 @@ class Images extends React.Component {
             flowerName: ""
         }
     };
-
+    // EVENT: Handles click events from images and changes the 'flowerName' value in the state with 
+    // to the clicked flower name
     handleClick = (name) => {
         // event.preventDefault();
         this.setState({
@@ -33,7 +34,7 @@ class Images extends React.Component {
 
         // alert(name);
     }
-    /* FUNCTION: Returns a row with 4 columns of pictures   */
+    // FUNCTION: Returns a row with 4 columns of pictures 
     renderFlowers = (flower) => {
     
         return (
@@ -47,8 +48,9 @@ class Images extends React.Component {
     }
    
     render(){
-        if(this.state.flowerName.length > 0){
-            let from = { pathname: '/entry', state: { flowerName: this.state.flowerName } }
+
+        if(this.state.flowerName.length > 0){ // flowerName is present 
+            let from = { pathname: '/quiz', state: { flowerName: this.state.flowerName } }
             return (
                 <Redirect to={from} />
              );
@@ -62,6 +64,7 @@ class Images extends React.Component {
         );}
 
 }
+
 
 
 class Flower {

@@ -8,7 +8,7 @@ import {
 //Components
 import Home from './components/Home';
 import Login from './components/Login';
-import Entry from './components/Entry';
+import Quiz from './components/Quiz';
 
 /* 
       Passes props source to the desired destination. Also
@@ -24,7 +24,7 @@ function App() {
       <Route path='/login'>
         <Login />
       </Route>
-      <Route path='/entry' render={ props => <Entry {...props}/>}>
+      <Route path='/quiz' render={ props => <Quiz {...props}/>}>
     </Route>
     </Switch>
    </BrowserRouter>

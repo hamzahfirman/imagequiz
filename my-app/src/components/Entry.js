@@ -1,21 +1,25 @@
 import React from 'react';
-import './Entry.css'
+import './Entry.css';
 // All the entries from the server 
 
 
 class Entry extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    
     render() {
-        let name = "";
+        // let name = "";
 
-        const location = this.props.location;
-        if(location) {
-          if(location.state){
-            if(location.state.flowerName){
-             name = location.state.flowerName;
-            }
-          }
-        }
-        // const { entry } = this.props;
+        // const location = this.props.location;
+        // if(location) {
+        //   if(location.state){
+        //     if(location.state.flowerName){
+        //      name = location.state.flowerName;
+        //     }
+        //   }
+        // }
+        const { entry } = this.props;
         /* 
             Show the entries 
             that we received from Home
@@ -23,8 +27,9 @@ class Entry extends React.Component {
         return(
             <div>
                 <div className="allEntries">
-                    <div>Hello World {name}</div>
-               
+                    <div>{entry.name}</div>
+                    <div>{entry.origin}</div>
+
                 </div>
             </div>
         );
