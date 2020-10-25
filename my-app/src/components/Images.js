@@ -10,6 +10,9 @@ import Sunflower from '../images/sunflower.png';
 import Rose from '../images/rose.png';
 import Waterlily from '../images/waterlily.png';
 import Tulip from '../images/tulip.png';
+import Mathematics from "../images/math.png";
+import Animals from "../images/animal1.png";
+import Flowers from "../images/sunflower3.png";
 /* React-Bootstrap */
 import { Table } from 'react-bootstrap';
 
@@ -17,11 +20,10 @@ class Images extends React.Component {
     constructor(props) {
         super(props);
         this.state ={
-            flowers: [
-                {one: daffodil, two: cherryblossom, three: lily, four: daisy},
-                {one: sunflower, two: tulip, three: rose, four: waterlily}
+            categories: [
+                {one: flowers, two: animals, three: mathematics},
             ],
-            flowerName: ""
+            categoryName: ""
         }
     };
     // EVENT: Handles click events from images and changes the 'flowerName' value in the state with 
@@ -29,28 +31,27 @@ class Images extends React.Component {
     handleClick = (name) => {
         // event.preventDefault();
         this.setState({
-            flowerName: name
+            categoryName: name
         });
 
         // alert(name);
     }
     // FUNCTION: Returns a row with 4 columns of pictures 
-    renderFlowers = (flower) => {
+    renderCategories = (cat) => {
     
         return (
             <tr>
-                <td><img src={flower.one.picture} onClick={() => this.handleClick(flower.one.name)}/><br></br>{flower.one.name}</td>
-                <td><img src={flower.two.picture}/><br></br>{flower.two.name}</td>
-                <td><img src={flower.three.picture}/><br></br>{flower.three.name}</td>
-                <td><img src={flower.four.picture}/><br></br>{flower.four.name}</td>
+                <td><img src={cat.one.picture} onClick={() => this.handleClick(cat.one.name)}/><br></br>{cat.one.name}</td>
+                <td><img src={cat.two.picture} onClick={() => this.handleClick(cat.two.name)}/><br></br>{cat.two.name}</td>
+                <td><img src={cat.three.picture} onClick={() => this.handleClick(cat.three.name)}/><br></br>{cat.three.name}</td>
             </tr>
         );
     }
    
     render(){
 
-        if(this.state.flowerName.length > 0){ // flowerName is present 
-            let from = { pathname: '/quiz', state: { flowerName: this.state.flowerName } }
+        if(this.state.categoryName.length > 0){ // flowerName is present 
+            let from = { pathname: '/quiz', state: { categoryName: this.state.categoryName } }
             return (
                 <Redirect to={from} />
              );
@@ -58,14 +59,14 @@ class Images extends React.Component {
         return(
             <div>
             <table className="tableFlowers" >
-                {this.state.flowers.map(this.renderFlowers)}
+                {this.state.categories.map(this.renderCategories)}
             </table>
         </div>
         );}
 
 }
 
-
+// Quiz Categories 
 
 class Flower {
     constructor(name, pictureName) {
@@ -73,15 +74,29 @@ class Flower {
         this.picture = pictureName;
     }
 }
+class Animal {
+    constructor(name, pictureName) {
+        this.name = name;
+        this.picture = pictureName;
+    }
+}
+class Mathematic {
+    constructor(name, pictureName) {
+        this.name = name;
+        this.picture = pictureName;
+    }
+}
 // Flower Objects 
-let daffodil = new Flower('Daffodil', Daffodil);
-let cherryblossom = new Flower('Cherry blossom', Cherryblossom);
-let lily = new Flower('Lily', Lily);
-let daisy = new Flower('Daisy', Daisy);
-let sunflower = new Flower('Sunflower', Sunflower);
-let tulip = new Flower('Tulip', Tulip);
-let rose = new Flower('Rose', Rose);
-let waterlily = new Flower('Water lily', Waterlily);
+let flowers = new Flower('Flowers', Flowers);
+let animals = new Flower('Animals', Animals);
+let mathematics = new Flower('Mathematics', Mathematics);
+// let cherryblossom = new Flower('Cherry blossom', Cherryblossom);
+// let lily = new Flower('Lily', Lily);
+// let daisy = new Flower('Daisy', Daisy);
+// let sunflower = new Flower('Sunflower', Sunflower);
+// let tulip = new Flower('Tulip', Tulip);
+// let rose = new Flower('Rose', Rose);
+// let waterlily = new Flower('Water lily', Waterlily);
 
 
 export default Images;
