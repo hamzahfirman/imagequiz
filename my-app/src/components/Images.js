@@ -41,9 +41,9 @@ class Images extends React.Component {
     
         return (
             <tr>
-                <td><img src={cat.one.picture} onClick={() => this.handleClick(cat.one.name)}/><br></br>{cat.one.name}</td>
-                <td><img src={cat.two.picture} onClick={() => this.handleClick(cat.two.name)}/><br></br>{cat.two.name}</td>
-                <td><img src={cat.three.picture} onClick={() => this.handleClick(cat.three.name)}/><br></br>{cat.three.name}</td>
+                <td><img src={cat.one.picture} onClick={() => this.handleClick(cat.one.name)}/><br></br><div className="caption">{cat.one.name}</div></td>
+                <td><img src={cat.two.picture} onClick={() => this.handleClick(cat.two.name)}/><br></br><div className="caption">{cat.two.name}</div></td>
+                <td><img src={cat.three.picture} onClick={() => this.handleClick(cat.three.name)}/><br></br><div className="caption">{cat.three.name}</div></td>
             </tr>
         );
     }
@@ -68,28 +68,16 @@ class Images extends React.Component {
 
 // Quiz Categories 
 
-class Flower {
-    constructor(name, pictureName) {
-        this.name = name;
-        this.picture = pictureName;
-    }
-}
-class Animal {
-    constructor(name, pictureName) {
-        this.name = name;
-        this.picture = pictureName;
-    }
-}
-class Mathematic {
+class Category {
     constructor(name, pictureName) {
         this.name = name;
         this.picture = pictureName;
     }
 }
 // Flower Objects 
-let flowers = new Flower('Flowers', Flowers);
-let animals = new Flower('Animals', Animals);
-let mathematics = new Flower('Mathematics', Mathematics);
+let flowers = new Category('Flowers', Flowers);
+let animals = new Category('Animals', Animals);
+let mathematics = new Category('Mathematics', Mathematics);
 // let cherryblossom = new Flower('Cherry blossom', Cherryblossom);
 // let lily = new Flower('Lily', Lily);
 // let daisy = new Flower('Daisy', Daisy);

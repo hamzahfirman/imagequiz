@@ -36,9 +36,23 @@ class Quiz extends React.Component {
         this.setState({cursor: cursor - 1});
         }
     }
+
+     // }
     // This function will be executed after everything gets loaded in the DOM.
     // After 'render()' executed 
     componentDidMount() {
+
+        let name = "";
+
+        const location = this.props.location;
+        const cat = {
+            flowers: 0,animals: 1,mathematics: 2};
+        if(location) {
+            if(location.state){
+                 if(location.state.categoryName){
+                    name = location.state.categoryName;
+            }
+        }
         // 'entries' - Calls a function 'fecthEntries()' in server.js component
         const entries = server.fetchEntries();
         // Passes a list of objects/ entries frome entries.js
@@ -48,6 +62,7 @@ class Quiz extends React.Component {
         // only available after 'render()' object gets render.
         window.addEventListener("keydown", this.handleKeyDown);
     }
+}
     // Will be executed right before the page gets destroyed 
     componentWillUnmount(){
     // This will remove the current event listener in 'componentDidMount()'

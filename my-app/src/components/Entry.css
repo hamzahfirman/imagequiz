@@ -1,7 +1,18 @@
 .allEntries {
     text-align: center;
-    padding-top: 40px;
-    color:black;
+    color:floralwhite;
     text-shadow: 1px 1px gray;
-    font-weight: bold;
+    /* font-weight: bold; */
+    border: solid darkslategrey;
+    height: 300px;
+    width: 300px; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    background-color: darkslategrey;
+
+    
+}
+.answers {
+    padding:auto;
 }
