@@ -1,6 +1,8 @@
 import React from 'react';
 import server from '../ServerInterface/server';
 import Entry from './Entry';
+// CSS File 
+import './Quiz.css';
 
 /* QUIZ TIME */
 class Quiz extends React.Component {
@@ -26,7 +28,9 @@ class Quiz extends React.Component {
         return (
             <div>
                 <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
-                <button onClick={this.handleOnClickNext}>Next</button>
+                <div id="nextContainer">
+                    <button id="nextButton" onClick={this.handleOnClickNext}>Next</button>
+                </div>
             </div>
         );
     }
