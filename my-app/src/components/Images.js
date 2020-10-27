@@ -75,9 +75,9 @@ class Category {
     }
 }
 // Flower Objects 
-let flowers = new Category('Flowers', Flowers);
-let animals = new Category('Animals', Animals);
-let mathematics = new Category('Mathematics', Mathematics);
+let flowers = new Category('flowers', Flowers);
+let animals = new Category('animals', Animals);
+let mathematics = new Category('mathematics', Mathematics);
 // let cherryblossom = new Flower('Cherry blossom', Cherryblossom);
 // let lily = new Flower('Lily', Lily);
 // let daisy = new Flower('Daisy', Daisy);

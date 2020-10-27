@@ -1,12 +1,25 @@
-#nextContainer {
-    /* margin-left: 20px; */
-    
+#nextContainer {  
     text-align: center;
     margin-left: 262px;
 }
 #nextButton:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
     color:yellowgreen;
-    /* transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); */
+}
+#buttonContainer {
+    text-align: center;
+
+}
+/* Separates the two buttons */
+.twoButtons {
+    margin-left: 212px;
+}
+#backContainer {
+    text-align: center;
+    margin-right: 262px;
+}
+
+#backButton:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    color:yellowgreen;
 }
