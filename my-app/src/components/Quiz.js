@@ -12,11 +12,22 @@ class Quiz extends React.Component {
             mounted: false
         };
     }
+    onChoiceSelected = () => {
+        let { cursor } = this.state;
+        this.setState({cursor: cursor + 1});
+    }
+    handleOnClickNext = () => {
+        let { cursor } = this.state;
+        this.setState({cursor: cursor + 1});
+    }
     // Calls 'Entry' component
     questions = () => {
         const { cursor, entries } = this.state;
         return (
-            <Entry entry={entries[cursor]}/> 
+            <div>
+                <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
+                <button onClick={this.handleOnClickNext}>Next</button>
+            </div>
         );
     }
     // NOTES: Once the event listener is executed below, it will 
@@ -45,8 +56,8 @@ class Quiz extends React.Component {
         let name = "";
 
         const location = this.props.location;
-        const cat = {
-            flowers: 0,animals: 1,mathematics: 2};
+        // const cat = {
+        //     flowers: 0,animals: 1,mathematics: 2};
         if(location) {
             if(location.state){
                  if(location.state.categoryName){
@@ -54,9 +65,9 @@ class Quiz extends React.Component {
             }
         }
         // 'entries' - Calls a function 'fecthEntries()' in server.js component
-        const entries = server.fetchEntries();
+        const quiz = server.fetchEntries(name);
         // Passes a list of objects/ entries frome entries.js
-        this.setState({entries: entries});
+        this.setState({entries: quiz.details});
         // Once the user pressed 
         // Also, it is placed in this component because 'window' object 
         // only available after 'render()' object gets render.
@@ -78,15 +89,10 @@ class Quiz extends React.Component {
                     {this.questions()}
                 </div>
             );
-
-        }else{
-            this.setState({
-                mounted: true
-            })
-        };
+        }
         return(
             <div>
-                Something is wrong!
+                Data is loading!
             </div>
         );
 

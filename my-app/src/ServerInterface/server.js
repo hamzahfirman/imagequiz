@@ -1,9 +1,12 @@
 import entries from './entries';
 
 // A Function that will fecth all entries
-let getEntries = () => {
+let getEntries = (catName) => {
     // Later On: We will connect to a backend and fetch all the entries from it. 
-    return entries;
+
+    // alert(cat);
+    let found = entries.find(x => x.type === catName.toLowerCase());
+    return found;
 }
 
 // Object 

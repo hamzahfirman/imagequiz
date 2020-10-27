@@ -7,7 +7,7 @@ class Entry extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            "flowers":["Tulip", "Crocus", "Buttercup","Lavender" , "Carnation", "Dahlia", "Orchids",
+            flowers:["Tulip", "Crocus", "Buttercup","Lavender" , "Carnation", "Dahlia", "Orchids",
                     "Aster", "Peony", "Hollyhock", "Foxgloves", "Hyacith"],
             animals: ["Bats", "Horse", "Giraffe","Coyote", "Goose", "Leopard", "Dog",
                      "Crow", "Flamingo", "Eagle", "Tiger", "Rabbit"],
@@ -16,8 +16,10 @@ class Entry extends React.Component {
         }
  
     }
-
-    randomizeAnwersLocation = () => {
+    handleOnClick = () => {
+        this.props.onChoiceSelected();
+    }
+    randomizeAnswersLocation = () => {
         
         const { entry } = this.props;
         const { flowers, animals, mathematics } = this.state;
@@ -26,14 +28,15 @@ class Entry extends React.Component {
 
         return(
             <div>
-                <input type="radio" name="cc" className="answers" value="visa"/> {entry.details[0].answer}
-                <input type="radio" name="cc" className="answers" value="mastercard"/>{entry.details[0].guesses[rand1]}
-                <input type="radio" name="cc" className="answers" value="amex"/> {entry.details[0].guesses[rand2]}
+                <input type="radio" name="cc" className="answers" onClick={this.handleOnClick} value={entry.answer}/> {entry.answer}
+                <input type="radio" name="cc" className="answers" onClick={this.handleOnClick}  value={entry.guesses[rand1]}/>{entry.guesses[rand1]}
+                <input type="radio" name="cc" className="answers" onClick={this.handleOnClick}  value={entry.guesses[rand2]}/> {entry.guesses[rand2]}
             </div>
         );
     }
     
     render() {
+
         const { entry } = this.props;
    
         
@@ -42,13 +45,12 @@ class Entry extends React.Component {
             that we received from Home
         */
         return(
-    
             <div>
                 <div className="allEntries">
                     <p id="question">
-                    <div id="image">{entry.details[0].image}</div>
-                    {entry.details[0].question}</p>
-                    {this.randomizeAnwersLocation()}
+                    <div id="image"><img src={require("../images/" + entry.image)} alt={entry.image}/></div>
+                    {entry.question}</p>
+                    {this.randomizeAnswersLocation()}
                 </div>
                 
             </div>

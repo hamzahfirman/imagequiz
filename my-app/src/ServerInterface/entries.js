@@ -13,7 +13,7 @@ let entries = [
      details: [
         {
         
-        image: <img src={Daffodil}/>,
+        image: "daffodil.png",
         question: "What is the name of this flower?",
         answer: 'Lily',
         guesses: ["Tulip", "Crocus", "Buttercup","Lavender" , "Carnation", "Dahlia", "Orchids",
@@ -22,7 +22,7 @@ let entries = [
         },
         {
         
-            image: <img src={Sunflower}/>,
+            image: "sunflower.png",
             question: "What is the name of this flower?",
             answer: 'Sunflower',
             guesses: ["Tulip", "Crocus", "Buttercup","Lavender" , "Carnation", "Dahlia", "Orchids",
@@ -31,7 +31,7 @@ let entries = [
         },
         {
         
-            image: <img src={Rose}/>,
+            image: "rose.png",
             question: "What is the name of this flower?",
             answer: 'Rose',
             guesses: ["Tulip", "Crocus", "Buttercup","Lavender" , "Carnation", "Dahlia", "Orchids",

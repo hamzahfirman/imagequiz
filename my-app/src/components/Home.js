@@ -29,7 +29,6 @@ class Home extends React.Component {
 
       <div>
       Hey, {aName}. Welcome to Image Quiz App Homepage!
-
       </div>
   );
   }
