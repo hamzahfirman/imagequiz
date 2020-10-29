@@ -17,6 +17,7 @@ class Quiz extends React.Component {
     onChoiceSelected = () => {
         let { cursor } = this.state;
         this.setState({cursor: cursor + 1});
+        // if()
     }
     // MEHTOD: Handles back button whenever it gets clicked. It will 
     // take the user to the next question by substracting 1 from the cursor
