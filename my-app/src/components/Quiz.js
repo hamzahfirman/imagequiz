@@ -11,13 +11,16 @@ class Quiz extends React.Component {
         this.state = {
             entries: [],
             cursor: 0,
-            mounted: false
+            mounted: false,
+            score: 0
         };
     }
-    onChoiceSelected = () => {
-        let { cursor } = this.state;
-        this.setState({cursor: cursor + 1});
-        // if()
+    onChoiceSelected = (answer) => {
+        let { cursor, score, entries } = this.state;
+        if(entries[cursor].answer == answer){
+            this.setState({score: score + 10});
+        }
+        
     }
     // MEHTOD: Handles back button whenever it gets clicked. It will 
     // take the user to the next question by substracting 1 from the cursor
@@ -36,11 +39,12 @@ class Quiz extends React.Component {
     // sends an object that tells what event has happened 
     // For instance, it can tell you what key was pressed
     questions = () => {
-        const { cursor, entries } = this.state;
+        const { cursor, entries, score } = this.state;
         if((cursor == 0) && (cursor < entries.length -1)){ // Inital stage in the Quiz
             return (
                 <div>
                     <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
+                    <p>The current score is{score}</p>
                     <div id="nextContainer">
                         <button id="nextButton" onClick={this.handleOnClickNext}>Next</button>
                     </div>
@@ -51,6 +55,7 @@ class Quiz extends React.Component {
             return (
                 <div>
                     <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
+                    <p>The current score is{score}</p>
                     <div id="buttonContainer">
                         <button id="button" onClick={this.handleOnClickBack}>Back</button>
                         <button id="button" className="twoButtons"onClick={this.handleOnClickNext}>Next</button>
@@ -60,7 +65,8 @@ class Quiz extends React.Component {
         }else{
             return ( // When the user has reached the last queston of the Quiz
                 <div>
-                    <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
+                    <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/>
+                    <p>The current score is{score}</p> 
                     <div id="backContainer">
                         <button id="backButton" onClick={this.handleOnClickBack}>Back</button>
                     </div>
@@ -72,19 +78,7 @@ class Quiz extends React.Component {
     // send an object that tells what event has happened 
     // For instance, it can tell you what key was pressed
     // handleKeyDown = (e) => {
-    //     // Deconstruction:
-    //     const { cursor, entries } = this.state;
 
-    //     if(e.keyCode === 39 && (cursor < entries.length -1)){ // Right arrow key 
-    //     // Increment the cursor key in the state in order to move 
-    //     // to the next word (right)
-    //     this.setState({cursor: cursor + 1});
-    //     } else if (e.keyCode ==  37 && (cursor > 0)) {  // Left arrow key
-    //     // Decrement the cursor key in the state in order to move 
-    //     // to the previous word (left)
-    //     this.setState({cursor: cursor - 1});
-    //     }
-    // }
 
      // }
     // This function will be executed after everything gets loaded in the DOM.

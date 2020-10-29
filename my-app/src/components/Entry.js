@@ -7,17 +7,11 @@ class Entry extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            flowers:["Tulip", "Crocus", "Buttercup","Lavender" , "Carnation", "Dahlia", "Orchids",
-                    "Aster", "Peony", "Hollyhock", "Foxgloves", "Hyacith"],
-            animals: ["Bats", "Horse", "Giraffe","Coyote", "Goose", "Leopard", "Dog",
-                     "Crow", "Flamingo", "Eagle", "Tiger", "Rabbit"],
-            mathematics: ["43", "92", "-4","-43", "787", "43", "64",
-                     "-1223", "1886", "98", "99", "30"],
         }
  
     }
-    handleOnClick = () => {
-        this.props.onChoiceSelected();
+    handleOnClick = (e) => {
+        this.props.onChoiceSelected(e.target.value);
     }
     randomizeAnswersLocation = () => {
         
@@ -55,16 +49,5 @@ class Entry extends React.Component {
                 
             </div>
         );
-    }
-}
-   // let name = "";
-
-        // const location = this.props.location;
-        // if(location) {
-        //   if(location.state){
-        //     if(location.state.flowerName){
-        //      name = location.state.flowerName;
-        //     }
-        //   }
-        // }
+        }}
 export default Entry;
