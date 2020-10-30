@@ -65,8 +65,8 @@ class Quiz extends React.Component {
                 <div>
                     <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
                     <div id="buttonContainer">
-                        <button id="button" onClick={this.handleOnClickBack}>Back</button>
-                        <button id="button" className="twoButtons"onClick={this.handleOnClickNext}>Next</button>
+                        <button id="button"  onClick={this.handleOnClickBack}>Back</button>
+                        <button id="button"  onClick={this.handleOnClickNext}>Next</button>
                     </div>
                     <p className="score">Current score: {score}</p>
                 </div>
@@ -76,7 +76,8 @@ class Quiz extends React.Component {
                 <div>
                     <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/>
                     <div id="backContainer">
-                        <button id="backButton" onClick={this.handleOnClickBack}>Back</button>
+                        <button id="theEndButtons" onClick={this.handleOnClickBack}>Back</button>
+                        <button id="theEndButtons">Finish</button>
                     </div>
                     <p className="score">Total score: {score}</p> 
                 </div>
