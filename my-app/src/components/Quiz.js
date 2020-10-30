@@ -12,26 +12,35 @@ class Quiz extends React.Component {
             entries: [],
             cursor: 0,
             mounted: false,
-            score: 0
+            score: 0,
+            check: false
         };
     }
     onChoiceSelected = (answer) => {
         let { cursor, score, entries } = this.state;
         if(entries[cursor].answer == answer){
-            this.setState({score: score + 10});
+            this.setState({check: true});
         }
         
     }
     // MEHTOD: Handles back button whenever it gets clicked. It will 
     // take the user to the next question by substracting 1 from the cursor
     handleOnClickBack = () => {
-        let { cursor } = this.state;
+        let { cursor, check} = this.state;
+        // if(check == true){
+        //     this.setState({score:  score + 10});
+        //     this.setState({check: false});
+        // }
         this.setState({cursor: cursor - 1}); 
     }
     // MEHTOD: Handles next button whenever it gets clicked. It will 
     // take the user to the next question by adding 1 to the cursor
     handleOnClickNext = () => {
-        let { cursor } = this.state;
+        let { cursor, check, score} = this.state;
+        if(check == true){
+            this.setState({score: score + 10});
+            this.setState({check: false});
+        }
         this.setState({cursor: cursor + 1});
     }
     // Calls 'Entry' component
@@ -44,10 +53,10 @@ class Quiz extends React.Component {
             return (
                 <div>
                     <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
-                    <p>The current score is{score}</p>
                     <div id="nextContainer">
                         <button id="nextButton" onClick={this.handleOnClickNext}>Next</button>
                     </div>
+                    <p className="score">Starting score: {score}</p>
                 </div>
             );
 
@@ -55,21 +64,21 @@ class Quiz extends React.Component {
             return (
                 <div>
                     <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
-                    <p>The current score is{score}</p>
                     <div id="buttonContainer">
                         <button id="button" onClick={this.handleOnClickBack}>Back</button>
                         <button id="button" className="twoButtons"onClick={this.handleOnClickNext}>Next</button>
                     </div>
+                    <p className="score">Current score: {score}</p>
                 </div>
             );
         }else{
             return ( // When the user has reached the last queston of the Quiz
                 <div>
                     <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/>
-                    <p>The current score is{score}</p> 
                     <div id="backContainer">
                         <button id="backButton" onClick={this.handleOnClickBack}>Back</button>
                     </div>
+                    <p className="score">Total score: {score}</p> 
                 </div>
             );
         }
@@ -94,8 +103,10 @@ class Quiz extends React.Component {
             if(location.state){
                  if(location.state.categoryName){
                     name = location.state.categoryName;
-            }
-        }
+                    }
+              }
+         }
+
         // 'entries' - Calls a function 'fecthEntries()' in server.js component
         const quiz = server.fetchEntries(name);
         // Passes a list of objects/ entries frome entries.js
@@ -105,7 +116,7 @@ class Quiz extends React.Component {
         // only available after 'render()' object gets render.
         window.addEventListener("keydown", this.handleKeyDown);
     }
-}
+
     // Will be executed right before the page gets destroyed 
     componentWillUnmount(){
     // This will remove the current event listener in 'componentDidMount()'
@@ -124,7 +135,7 @@ class Quiz extends React.Component {
         }
         return(
             <div>
-                Data is loading!
+                Data is loading...
             </div>
         );
 
