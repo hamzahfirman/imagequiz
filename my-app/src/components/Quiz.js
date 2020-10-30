@@ -1,6 +1,7 @@
 import React from 'react';
 import server from '../ServerInterface/server';
 import Entry from './Entry';
+import { Redirect } from 'react-router-dom';
 // CSS File 
 import './Quiz.css';
 
@@ -13,8 +14,12 @@ class Quiz extends React.Component {
             cursor: 0,
             mounted: false,
             score: 0,
-            check: false
+            check: false,
+            finished: false
         };
+    }
+    handleOnClickFinish = () => {
+        this.setState({finished: true});
     }
     onChoiceSelected = (answer) => {
         let { cursor, score, entries } = this.state;
@@ -77,7 +82,7 @@ class Quiz extends React.Component {
                     <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/>
                     <div id="backContainer">
                         <button id="theEndButtons" onClick={this.handleOnClickBack}>Back</button>
-                        <button id="theEndButtons">Finish</button>
+                        <button id="theEndButtons" onClick={this.handleOnClickFinish}>Finish</button>
                     </div>
                     <p className="score">Total score: {score}</p> 
                 </div>
@@ -127,7 +132,14 @@ class Quiz extends React.Component {
     }   
     
     render() {
-        if(this.state.entries.length > 0){
+        let from = { pathname: '/', state: { user: this.state.username } }
+        if(this.state.finished === true){
+            return(
+                <div>
+                    <Redirect to={from} />
+                </div>
+            );
+        }else if(this.state.entries.length > 0){
             return(
                 <div>
                     {this.questions()}
