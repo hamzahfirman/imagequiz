@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 // CSS File 
 import './Quiz.css';
 
+var CHECKPOINT = false;
 /* QUIZ TIME */
 class Quiz extends React.Component {
     constructor(props) {
@@ -14,7 +15,6 @@ class Quiz extends React.Component {
             cursor: 0,
             mounted: false,
             score: 0,
-            check: false,
             finished: false
         };
     }
@@ -24,7 +24,7 @@ class Quiz extends React.Component {
     onChoiceSelected = (answer) => {
         let { cursor, score, entries } = this.state;
         if(entries[cursor].answer == answer){
-            this.setState({check: true});
+            CHECKPOINT= true;
         }
         
     }
@@ -42,9 +42,10 @@ class Quiz extends React.Component {
     // take the user to the next question by adding 1 to the cursor
     handleOnClickNext = () => {
         let { cursor, check, score} = this.state;
-        if(check == true){
+        if(CHECKPOINT == true){
             this.setState({score: score + 10});
             this.setState({check: false});
+            CHECKPOINT = false;
         }
         this.setState({cursor: cursor + 1});
     }
@@ -120,14 +121,13 @@ class Quiz extends React.Component {
         // Once the user pressed 
         // Also, it is placed in this component because 'window' object 
         // only available after 'render()' object gets render.
-        window.addEventListener("keydown", this.handleKeyDown);
+       
     }
 
     // Will be executed right before the page gets destroyed 
     componentWillUnmount(){
     // This will remove the current event listener in 'componentDidMount()'
     // right before the page gets detroyed 
-    window.removeEventListener("keydown", this.handleKeyDown);
 
     }   
     

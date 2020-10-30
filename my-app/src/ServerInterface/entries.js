@@ -91,7 +91,7 @@ let entries = [
         
             image: "zebra.jpg",
             question: "What is the name of this animal?",
-            answer: 'Cherryblossom',
+            answer: 'Zebra',
             guesses: ["Bats", "Horse", "Giraffe","Coyote", "Goose", "Leopard", "Dog",
             "Crow", "Flamingo", "Eagle", "Tiger", "Rabbit"]
     
