@@ -30,13 +30,20 @@
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
     color:brown;
 }
-#finishContainer {
+/* #finishContainer {
     text-align: center;
     margin-left: 315px;
-}
+} */
 .score {
     margin: auto;
     text-align: center;
     background-color: aquamarine;
     width:150px;
+}
+.finishedContainer{
+    text-align: center;
+    margin: auto;
+    background-color: chocolate;
+    width:150px;
+    margin-top: 50px;
 }

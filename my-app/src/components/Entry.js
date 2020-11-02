@@ -14,27 +14,7 @@ class Entry extends React.Component {
     shuffle = (array) => {
         array.sort(() => Math.random() - 0.5);
     }
-    // getRadios = (currAnswers) => {
-    //     var count= 3;
-    //     var first = "";
-    //     var second = "";
-    //     var third = "";
-    //     while(count > 0){
-    //         var random  = Math.floor(Math.random() * count);
-    //         if(count == 1 ){
-    //             first = currAnswers[random];
 
-    //         }else if (count == 2){
-    //             second = currAnswers[random];
-    //         }else if (count == 3){
-    //             third = currAnswers[random]
-    //         }
-    //         count -= 1;
-    //         currAnswers.shift();
-    //     }
-    //     return [first, second, third];
-        
-    // }
     handleOnClick = (e) => {
         this.props.onChoiceSelected(e.target.value);
     }

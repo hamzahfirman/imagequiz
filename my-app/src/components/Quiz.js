@@ -15,10 +15,18 @@ class Quiz extends React.Component {
             cursor: 0,
             mounted: false,
             score: 0,
-            finished: false
+            finished: false,
+            gohome: false
         };
     }
+
+    handleOnClickHome = () => {
+        this.setState({gohome: true});
+        this.setState({finished: false});
+    }
+
     handleOnClickFinish = () => {
+  
         this.setState({finished: true});
     }
     onChoiceSelected = (answer) => {
@@ -85,7 +93,7 @@ class Quiz extends React.Component {
                         <button id="theEndButtons" onClick={this.handleOnClickBack}>Back</button>
                         <button id="theEndButtons" onClick={this.handleOnClickFinish}>Finish</button>
                     </div>
-                    <p className="score">Total score: {score}</p> 
+                    <p className="score">Current score: {score}</p> 
                 </div>
             );
         }
@@ -132,14 +140,26 @@ class Quiz extends React.Component {
     }   
     
     render() {
-        let from = { pathname: '/', state: { user: this.state.username } }
-        if(this.state.finished === true){
+        let from = { pathname: '/'};
+        let { score, finished, entries, gohome } = this.state;
+
+        if(gohome === true){
             return(
                 <div>
-                    <Redirect to={from} />
+                     <Redirect to={from} />
+                </div> 
+            );
+        }else if (finished === true){
+            return(
+                <div>
+                    <div className="finishedContainer">
+                        Congratulations!<br></br>
+                        The total score: {score}<br></br>
+                        <button onClick={this.handleOnClickHome}>Home</button>
+                    </div>
                 </div>
             );
-        }else if(this.state.entries.length > 0){
+        }else if(entries.length > 0){
             return(
                 <div>
                     {this.questions()}
