@@ -2,39 +2,48 @@ import React from 'react';
 import './Entry.css';
 // All the entries from the server 
 
-var passed = false;
+var data = [
+    {passed: false},
+    {passed: false},
+    {passed: false},
+    {passed: false},
+    {passed: false},
+    {passed: false}];
+
 class Entry extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             userAnswers: []
-        }
-    
+    }
     }
     shuffle = (array) => {
         array.sort(() => Math.random() - 0.5);
     }
 
     handleOnClick = (e) => {
-        let x = this.state.userAnswers;
-        x[this.props.cursor]["answer"] = e.target.value;
-        this.setState({userAnswers: x});
+    
+        let index = this.props.cursor;
+        let obj = data[index];
+        obj["answer"] = e.target.value;
+        this.setState({userAnswers: data});
         this.props.onChoiceSelected(e.target.value);
     }
     randomizeAnswersLocation = () => {
         
         const { entry, cursor } = this.props;
-        if(passed == false) {   
-            passed = true;
+        if(data[cursor]["passed"] === false) {   
+        
             var rand1 = Math.floor(Math.random() * 6) + 1;
             var rand2 = Math.floor(Math.random() * 6) + 6;
             var answers = [entry.answer, entry.guesses[rand1], entry.guesses[rand2]];
             
             //Records the choices 
-            let x = this.state.userAnswers;
-            let obj = {};
+            let index = this.props.cursor;
+            let obj = data[index];
             obj["choices"] = answers;
-            x[this.props.cursor] = obj;
+            //To show that this page has been passed 
+            data[cursor]["passed"] = true;
 
             this.shuffle(answers);
             return(
@@ -42,6 +51,12 @@ class Entry extends React.Component {
                     <input type="radio" name="categories" className="answers" onClick={this.handleOnClick} checked={this.state.userAnswers[cursor] === answers[0] ? "checked" : ""} value={answers[0]}/> {answers[0]}
                     <input type="radio" name="categories" className="answers" onClick={this.handleOnClick} checked={this.state.userAnswers[cursor] === answers[1] ? "checked" : ""} value={answers[1]}/>{answers[1]}
                     <input type="radio" name="categories" className="answers" onClick={this.handleOnClick} checked={this.state.userAnswers[cursor] === answers[2] ? "checked" : ""} value={answers[2]}/> {answers[2]}
+                </div>
+            );
+        }else{
+            return(
+                <div>
+                   Passed!
                 </div>
             );
         }
@@ -55,7 +70,7 @@ class Entry extends React.Component {
         //     </div>
         // );
     }
-    
+
     render() {
 
         const { entry } = this.props;
