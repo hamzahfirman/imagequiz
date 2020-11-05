@@ -30,7 +30,8 @@ class Quiz extends React.Component {
         this.setState({finished: true});
     }
     onChoiceSelected = (answer) => {
-        let { cursor, score, entries } = this.state;
+        const { cursor, entries } = this.state;
+
         if(entries[cursor].answer == answer){
             CHECKPOINT= true;
         }
@@ -39,7 +40,7 @@ class Quiz extends React.Component {
     // MEHTOD: Handles back button whenever it gets clicked. It will 
     // take the user to the next question by substracting 1 from the cursor
     handleOnClickBack = () => {
-        let { cursor, check} = this.state;
+        const { cursor } = this.state;
         // if(check == true){
         //     this.setState({score:  score + 10});
         //     this.setState({check: false});
@@ -49,13 +50,13 @@ class Quiz extends React.Component {
     // MEHTOD: Handles next button whenever it gets clicked. It will 
     // take the user to the next question by adding 1 to the cursor
     handleOnClickNext = () => {
-        let { cursor, check, score} = this.state;
+        const { score } = this.state;
         if(CHECKPOINT == true){
             this.setState({score: score + 10});
             this.setState({check: false});
             CHECKPOINT = false;
         }
-        this.setState({cursor: cursor + 1});
+        this.setState({cursor: this.state.cursor + 1});
     }
     // Calls 'Entry' component
     // NOTES: Once the event listener is executed below, it will 
@@ -66,7 +67,7 @@ class Quiz extends React.Component {
         if((cursor == 0) && (cursor < entries.length -1)){ // Inital stage in the Quiz
             return (
                 <div>
-                    <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
+                    <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]} cursor= {cursor}/> 
                     <div id="nextContainer">
                         <button id="nextButton" onClick={this.handleOnClickNext}>Next</button>
                     </div>
@@ -77,7 +78,7 @@ class Quiz extends React.Component {
         } else if((cursor > 0) && (cursor < entries.length -1)) { // After passing the first question
             return (
                 <div>
-                    <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/> 
+                    <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]} cursor= {cursor}/> 
                     <div id="buttonContainer">
                         <button id="button"  onClick={this.handleOnClickBack}>Back</button>
                         <button id="button"  onClick={this.handleOnClickNext}>Next</button>
@@ -88,7 +89,7 @@ class Quiz extends React.Component {
         }else{
             return ( // When the user has reached the last queston of the Quiz
                 <div>
-                    <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]}/>
+                    <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]} cursor= {cursor}/>
                     <div id="backContainer">
                         <button id="theEndButtons" onClick={this.handleOnClickBack}>Back</button>
                         <button id="theEndButtons" onClick={this.handleOnClickFinish}>Finish</button>
@@ -141,7 +142,7 @@ class Quiz extends React.Component {
     
     render() {
         let from = { pathname: '/'};
-        let { score, finished, entries, gohome } = this.state;
+        const { score, finished, entries, gohome } = this.state;
 
         if(gohome === true){
             return(
