@@ -89,7 +89,7 @@ class Quiz extends React.Component {
         }else{
             return ( // When the user has reached the last queston of the Quiz
                 <div>
-                    <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]} cursor= {cursor}/>
+                    <Entry onChoiceSelected={this.onChoiceSelected}  entry={entries[cursor]} cursor= {cursor}/>
                     <div id="backContainer">
                         <button id="theEndButtons" onClick={this.handleOnClickBack}>Back</button>
                         <button id="theEndButtons" onClick={this.handleOnClickFinish}>Finish</button>

@@ -16,7 +16,7 @@ class Entry extends React.Component {
         super(props);
         this.state = {
             userAnswers: []
-    }
+        }
     }
     // 
     shuffle = (array) => {
@@ -25,9 +25,11 @@ class Entry extends React.Component {
 
     handleOnClick = (e) => {
     
+        //Storing the checked answered 
         let index = this.props.cursor;
         let obj = data[index];
         obj["answer"] = e.target.value;
+        // Updating 'userAnswers' in the state
         this.setState({userAnswers: data});
         this.props.onChoiceSelected(e.target.value);
     }
@@ -35,7 +37,7 @@ class Entry extends React.Component {
         
         const { entry, cursor } = this.props;
 
-        if(data[cursor]["passed"] === false) {   
+        if(data[cursor]["passed"] === false) {   // Initial visit to the page
         
             var rand1 = Math.floor(Math.random() * 6) + 1;
             var rand2 = Math.floor(Math.random() * 6) + 6;
@@ -57,12 +59,13 @@ class Entry extends React.Component {
                     <input type="radio" name="categories" className="answers" onClick={this.handleOnClick} checked={this.state.userAnswers[cursor] === answers[2] ? "checked" : ""} value={answers[2]}/> {answers[2]}
                 </div>
             );
-        }else{
+        }else{ // 
             // Get all the stored choices 
             let index = this.props.cursor;
             let obj = data[index];
             let storedChoices =  obj["choices"];
             let currAnswer = obj["answer"];
+
             return(
                 <div>
                     <input type="radio" name="categories" className="answers" onClick={this.handleOnClick} checked={currAnswer === storedChoices[0] ? "checked" : ""} value={storedChoices[0]}/> {storedChoices[0]}
@@ -77,11 +80,6 @@ class Entry extends React.Component {
     render() {
 
         const { entry } = this.props;
-
-        /* 
-            Show the entries 
-            that we received from Home
-        */
         return(
             <div>
                 <div className="allEntries">
