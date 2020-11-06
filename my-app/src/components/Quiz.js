@@ -4,6 +4,8 @@ import Entry from './Entry';
 import { Redirect } from 'react-router-dom';
 // CSS File 
 import './Quiz.css';
+import { reset } from './data';
+
 
 var CHECKPOINT = false;
 /* QUIZ TIME */
@@ -26,7 +28,9 @@ class Quiz extends React.Component {
     }
 
     handleOnClickFinish = () => {
-  
+     
+       reset();
+       
         this.setState({finished: true});
     }
     onChoiceSelected = (answer) => {

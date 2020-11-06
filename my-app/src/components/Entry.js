@@ -1,16 +1,8 @@
 import React from 'react';
 import './Entry.css';
+import { data }  from './data';
 
 // All necessary data to each quiz question
-var data = [
-    {passed: false},
-    {passed: false},
-    {passed: false},
-    {passed: false},
-    {passed: false},
-    {passed: false}
-];
-
 class Entry extends React.Component {
     constructor(props){
         super(props);
