@@ -51,7 +51,8 @@ class Images extends React.Component {
     render(){
 
         if(this.state.categoryName.length > 0){ // flowerName is present 
-            let from = { pathname: '/quiz', state: { categoryName: this.state.categoryName } }
+            let username = this.props.aUsername;
+            let from = { pathname: '/quiz', state: { categoryName: this.state.categoryName, username: username } }
             return (
                 <Redirect to={from} />
              );

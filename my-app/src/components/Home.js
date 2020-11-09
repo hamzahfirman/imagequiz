@@ -55,7 +55,7 @@ class Home extends React.Component {
           {username}
           </div>
               {this.body(username)}
-              <Images />
+              <Images aUsername={username}/>
         </div>
       );
       }else{

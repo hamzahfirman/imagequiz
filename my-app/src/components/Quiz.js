@@ -18,13 +18,13 @@ class Quiz extends React.Component {
             mounted: false,
             score: 0,
             finished: false,
-            gohome: false,
+            goHome: false,
             retry: false
         };
     }
 
     handleOnClickHome = () => {
-        this.setState({gohome: true});
+        this.setState({goHome: true});
         this.setState({finished: false});
     }
 
@@ -153,25 +153,23 @@ class Quiz extends React.Component {
     
     render() {
 
-        const { score, finished, entries, gohome, retry } = this.state;
+        const { score, finished, entries, goHome, retry } = this.state;
         if(retry === true){
             return(
                 <div>
                  {this.questions()}
                 </div> 
             );
-        }else if (finished === true){
-            return(
+        }else if (goHome === true){
+            let username = "";
+            const location = this.props.location;
+            username = location.state.username;
+            let from = { pathname: '/', state: { user: username} }
+            return (
                 <div>
-                    <div className="finishedContainer">
-                        <div id="congrats">Congratulations!<br></br>
-                        Total score: {score}<br></br></div>
-                        <div className="lastPageButtons">
-                        <button className="homeAndRetry" id="homeButton"  onClick={this.handleOnClickHome}>Home</button>
-                        <button  className="homeAndRetry" id="retryButton" onClick={this.handleOnClickRetry}>Retry</button></div>
-                    </div>
+                  <Redirect to={from} />
                 </div>
-            );
+             );
         }else if (finished === true){
             return(
                 <div>
