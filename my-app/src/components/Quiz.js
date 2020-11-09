@@ -18,7 +18,8 @@ class Quiz extends React.Component {
             mounted: false,
             score: 0,
             finished: false,
-            gohome: false
+            gohome: false,
+            retry: false
         };
     }
 
@@ -27,9 +28,16 @@ class Quiz extends React.Component {
         this.setState({finished: false});
     }
 
+    handleOnClickRetry = () => {
+        reset();
+        this.setState({cursor: 0});
+        this.setState({retry: true});
+        this.setState({score: 0});
+
+    }
     handleOnClickFinish = () => {
-     
        reset();
+       this.setState({retry: false});
        this.setState({finished: true});
     }
     onChoiceSelected = (answer) => {
@@ -113,7 +121,7 @@ class Quiz extends React.Component {
     // After 'render()' executed 
     componentDidMount() {
 
-        let name = "";
+        var catName = "";
 
         const location = this.props.location;
         // const cat = {
@@ -121,13 +129,13 @@ class Quiz extends React.Component {
         if(location) {
             if(location.state){
                  if(location.state.categoryName){
-                    name = location.state.categoryName;
+                    catName = location.state.categoryName;
                     }
               }
          }
 
         // 'entries' - Calls a function 'fecthEntries()' in server.js component
-        const quiz = server.fetchEntries(name);
+        const quiz = server.fetchEntries(catName);
         // Passes a list of objects/ entries frome entries.js
         this.setState({entries: quiz.details});
         // Once the user pressed 
@@ -144,14 +152,25 @@ class Quiz extends React.Component {
     }   
     
     render() {
-        let from = { pathname: '/'};
-        const { score, finished, entries, gohome } = this.state;
 
-        if(gohome === true){
+        const { score, finished, entries, gohome, retry } = this.state;
+        if(retry === true){
             return(
                 <div>
-                     <Redirect to={from} />
+                 {this.questions()}
                 </div> 
+            );
+        }else if (finished === true){
+            return(
+                <div>
+                    <div className="finishedContainer">
+                        <div id="congrats">Congratulations!<br></br>
+                        Total score: {score}<br></br></div>
+                        <div className="lastPageButtons">
+                        <button className="homeAndRetry" id="homeButton"  onClick={this.handleOnClickHome}>Home</button>
+                        <button  className="homeAndRetry" id="retryButton" onClick={this.handleOnClickRetry}>Retry</button></div>
+                    </div>
+                </div>
             );
         }else if (finished === true){
             return(
