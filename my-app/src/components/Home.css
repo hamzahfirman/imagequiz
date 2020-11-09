@@ -15,5 +15,11 @@ body{
 .Home{
     text-align: left;
 }
+#welcomeMessage {
+    text-align: center;
+    color: darkolivegreen;
+    font-weight: bold;
+    text-shadow: 1px 1px hsl(303, 100%, 50%);
+}
 
 

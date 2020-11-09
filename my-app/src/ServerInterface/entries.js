@@ -140,7 +140,7 @@ let entries = [
        
            image: "math3.jpg",
            question: "What is the result?",
-           answer: '0',
+           answer: 'undefined',
            guesses: ["43", "92", "-4","-43", "787", "43", "64",
            "-1223", "1886", "98", "99", "30"]
    

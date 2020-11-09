@@ -27,8 +27,8 @@ class Home extends React.Component {
 
     return( 
 
-      <div>
-      Hey, {aName}. Welcome to Image Quiz App Homepage!
+      <div id="welcomeMessage">
+      Welcome to Image Quiz App Homepage!
       </div>
   );
   }
@@ -51,6 +51,7 @@ class Home extends React.Component {
     if(username.length > 0){
       return(
         <div>
+          <Link to='/'>Logout</Link>
           <div className="loginButton">
           {username}
           </div>
