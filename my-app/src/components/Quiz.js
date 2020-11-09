@@ -30,8 +30,7 @@ class Quiz extends React.Component {
     handleOnClickFinish = () => {
      
        reset();
-       
-        this.setState({finished: true});
+       this.setState({finished: true});
     }
     onChoiceSelected = (answer) => {
         const { cursor, entries } = this.state;
@@ -158,9 +157,11 @@ class Quiz extends React.Component {
             return(
                 <div>
                     <div className="finishedContainer">
-                        Congratulations!<br></br>
-                        The total score: {score}<br></br>
-                        <button onClick={this.handleOnClickHome}>Home</button>
+                        <div id="congrats">Congratulations!<br></br>
+                        Total score: {score}<br></br></div>
+                        <div className="lastPageButtons">
+                        <button className="homeAndRetry" id="homeButton"  onClick={this.handleOnClickHome}>Home</button>
+                        <button  className="homeAndRetry" id="retryButton" onClick={this.handleOnClickRetry}>Retry</button></div>
                     </div>
                 </div>
             );

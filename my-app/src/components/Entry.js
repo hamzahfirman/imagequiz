@@ -10,11 +10,11 @@ class Entry extends React.Component {
             userAnswers: []
         }
     }
-    // 
+    // METHOD: Shuffles the index of a sorted arrray 
     shuffle = (array) => {
         array.sort(() => Math.random() - 0.5);
     }
-
+    // METHOD: Handles 'onClick' event listener in radios from 'getPossibleAnswers()'
     handleOnClick = (e) => {
     
         //Storing the checked answered 
@@ -68,7 +68,7 @@ class Entry extends React.Component {
         }
 
     }
-
+    // METHOD: Renders the return values into GUI 
     render() {
 
         const { entry } = this.props;
