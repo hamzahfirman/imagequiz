@@ -36,6 +36,11 @@ class Quiz extends React.Component {
 
     }
     handleOnClickFinish = () => {
+        const { score } = this.state;
+        if(CHECKPOINT == true){
+            this.setState({score: score + 10});
+            CHECKPOINT = false;
+        }
        reset();
        this.setState({retry: false});
        this.setState({finished: true});
@@ -110,13 +115,7 @@ class Quiz extends React.Component {
             );
         }
     }
-    // NOTES: Once the event listener is executed below, it will 
-    // send an object that tells what event has happened 
-    // For instance, it can tell you what key was pressed
-    // handleKeyDown = (e) => {
-
-
-     // }
+   
     // This function will be executed after everything gets loaded in the DOM.
     // After 'render()' executed 
     componentDidMount() {
