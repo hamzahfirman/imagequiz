@@ -143,12 +143,7 @@ class Quiz extends React.Component {
        
     }
 
-    // Will be executed right before the page gets destroyed 
-    componentWillUnmount(){
-    // This will remove the current event listener in 'componentDidMount()'
-    // right before the page gets detroyed 
-
-    }   
+    // Will be executed right before the page gets destroyed  
     
     render() {
 
