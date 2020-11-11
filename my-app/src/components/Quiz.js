@@ -66,13 +66,19 @@ class Quiz extends React.Component {
     // MEHTOD: Handles next button whenever it gets clicked. It will 
     // take the user to the next question by adding 1 to the cursor
     handleOnClickNext = () => {
-        const { score } = this.state;
-        if(CHECKPOINT == true){
-            this.setState({score: score + 10});
-            this.setState({check: false});
-            CHECKPOINT = false;
+        try{ 
+            const { score } = this.state;
+            if(CHECKPOINT == true){
+                this.setState({score: score + 10});
+                this.setState({check: false});
+                CHECKPOINT = false;
+            }
+            this.setState({cursor: this.state.cursor + 1});
+
+        } catch(e) {
+            console.log(e);
         }
-        this.setState({cursor: this.state.cursor + 1});
+
     }
     // Calls 'Entry' component
     // NOTES: Once the event listener is executed below, it will 
@@ -143,7 +149,12 @@ class Quiz extends React.Component {
        
     }
 
-    // Will be executed right before the page gets destroyed  
+    // Will be executed right before the page gets destroyed 
+    componentWillUnmount(){
+    // This will remove the current event listener in 'componentDidMount()'
+    // right before the page gets detroyed 
+
+    }   
     
     render() {
 
