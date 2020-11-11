@@ -165,7 +165,8 @@ class Quiz extends React.Component {
                  {this.questions()}
                 </div> 
             );
-        }else if (goHome === true){
+        }
+        if (goHome === true){
             let username = "";
             const location = this.props.location;
             username = location.state.username;
@@ -175,7 +176,8 @@ class Quiz extends React.Component {
                   <Redirect to={from} />
                 </div>
              );
-        }else if (finished === true){
+        }
+        if (finished === true){
             return(
                 <div>
                     <div className="finishedContainer">
@@ -187,7 +189,8 @@ class Quiz extends React.Component {
                     </div>
                 </div>
             );
-        }else if(entries.length > 0){
+        }
+        if(entries.length > 0){
             return(
                 <div>
                     {this.questions()}
