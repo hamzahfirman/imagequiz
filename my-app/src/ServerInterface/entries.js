@@ -1,4 +1,3 @@
-
 let entries = [
     {type: "flowers" ,
      details: [
