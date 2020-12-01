@@ -8,7 +8,7 @@
  app.use(cors());
 
  app.get('/entries' , (request, response) => {
-     response.json(data.entries)
+     response.json(data.entries);
  })
 
  app.listen(port, () => {
