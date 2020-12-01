@@ -176,4 +176,4 @@ let entries = [
    
 ];
 
-export default entries;
+module.exports.entries = entries;

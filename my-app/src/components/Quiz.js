@@ -26,6 +26,7 @@ class Quiz extends React.Component {
     handleOnClickHome = () => {
         this.setState({goHome: true});
         this.setState({finished: false});
+    
     }
 
     handleOnClickRetry = () => {
@@ -57,10 +58,6 @@ class Quiz extends React.Component {
     // take the user to the next question by substracting 1 from the cursor
     handleOnClickBack = () => {
         const { cursor } = this.state;
-        // if(check == true){
-        //     this.setState({score:  score + 10});
-        //     this.setState({check: false});
-        // }
         this.setState({cursor: cursor - 1}); 
     }
     // MEHTOD: Handles next button whenever it gets clicked. It will 
@@ -86,6 +83,7 @@ class Quiz extends React.Component {
     // For instance, it can tell you what key was pressed
     questions = () => {
         const { cursor, entries, score } = this.state;
+        console.log(cursor + " " + entries);
         if((cursor == 0) && (cursor < entries.length -1)){ // Inital stage in the Quiz
             return (
                 <div>
@@ -97,7 +95,7 @@ class Quiz extends React.Component {
                 </div>
             );
 
-        } else if((cursor > 0) && (cursor < entries.length -1)) { // After passing the first question
+        }else if((cursor > 0) && (cursor < entries.length -1)) { // After passing the first question
             return (
                 <div>
                     <Entry onChoiceSelected={this.onChoiceSelected} entry={entries[cursor]} cursor= {cursor}/> 
@@ -108,8 +106,8 @@ class Quiz extends React.Component {
                     <p className="score">Current score: {score}</p>
                 </div>
             );
-        }else{
-            return ( // When the user has reached the last queston of the Quiz
+        }
+        return ( // When the user has reached the last queston of the Quiz
                 <div>
                     <Entry onChoiceSelected={this.onChoiceSelected}  entry={entries[cursor]} cursor= {cursor}/>
                     <div id="backContainer">
@@ -119,7 +117,7 @@ class Quiz extends React.Component {
                     <p className="score">Current score: {score}</p> 
                 </div>
             );
-        }
+        
     }
    
     // This function will be executed after everything gets loaded in the DOM.
