@@ -11,6 +11,18 @@
      response.json(data.entries);
  })
 
+ app.get('/quiz/:type' , (request, response) => {
+    let searchFor = request.params.type.toLowerCase();
+    let found = data.entries.find(x => x.type === searchFor);
+    if(found) {
+        response.json(found);
+    }
+    else{
+        response.status(404).json({error: `The type ${searchFor} could not be found`})
+    }
+    
+})
+
  app.listen(port, () => {
      console.log(`Server is listening on port ${port}!`)
  })
