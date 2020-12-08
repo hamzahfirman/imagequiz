@@ -12,7 +12,8 @@ class Home extends React.Component {
     super(props);
     // State is an object
     this.state = {
-        username: ''    
+        username: '',
+        quizzes: []    
     };
   };
 
@@ -33,10 +34,35 @@ class Home extends React.Component {
   );
   }
 
+  componentDidMount() {
+
+    // var catName = "";
+
+    // const location = this.props.location;
+    // // const cat = {
+    // //     flowers: 0,animals: 1,mathematics: 2};
+    // if(location) {
+    //     if(location.state){
+    //          if(location.state.categoryName){
+    //             catName = location.state.categoryName;
+    //             }
+    //       }
+    //  }
+
+    // 'entries' - Calls a function 'fecthEntries()' in server.js component
+    const quiz = server.fetchQuizzes().then(x => this.setState({quizzes: x})).catch(e => console.log(e));
+    // Passes a list of objects/ entries frome entries.js
+    // Once the user pressed 
+    // Also, it is placed in this component because 'window' object 
+    // only available after 'render()' object gets render.
+   
+}
+
   // Render function: What user see on'Homepage'
   render() {
     // Capturing the passed in data from 'Login' component
     let username = '';
+    const { quizzes } = this.state;
     // 'location' - All of the passed in data from other components will
     // be stored here in the 'location' method by props.
     const location = this.props.location;
@@ -49,6 +75,7 @@ class Home extends React.Component {
     }
     {/* A user has been logged in to the website */}
     if(username.length > 0){
+      let data = quizzes;
       return(
         <div>
           <Link to='/'>Logout</Link>
@@ -56,13 +83,13 @@ class Home extends React.Component {
           {username}
           </div>
               {this.body(username)}
-              <Images aUsername={username}/>
+              <Images aUsername={username} data={data}/>
         </div>
       );
-      }else{
+      }
+      if(quizzes.length > 0){
         return (
           <div className="Home">
-      
             <div className="loginButton">
                 {username.length > 0 ? username: 
                 <Link to='/login'>Login</Link>}
@@ -71,6 +98,11 @@ class Home extends React.Component {
           </div>
         );
     }
+    return(
+      <div>
+          Data is loading...
+      </div>
+    );
   }
 };
 

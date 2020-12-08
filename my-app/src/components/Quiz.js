@@ -83,7 +83,7 @@ class Quiz extends React.Component {
     // For instance, it can tell you what key was pressed
     questions = () => {
         const { cursor, entries, score } = this.state;
-        console.log(cursor + " " + entries);
+
         if((cursor == 0) && (cursor < entries.length -1)){ // Inital stage in the Quiz
             return (
                 <div>
@@ -124,23 +124,12 @@ class Quiz extends React.Component {
     // After 'render()' executed 
     componentDidMount() {
 
-        var catName = "";
-
+       
         const location = this.props.location;
-        // const cat = {
-        //     flowers: 0,animals: 1,mathematics: 2};
-        if(location) {
-            if(location.state){
-                 if(location.state.categoryName){
-                    catName = location.state.categoryName;
-                    }
-              }
-         }
-
-        // 'entries' - Calls a function 'fecthEntries()' in server.js component
-        const quiz = server.fetchEntries(catName);
+        var catId = location.state.categoryId;
+       
+        const quiz = server.fetchQuestions(catId).then(x => this.setState({entries: x})).catch(e => console.log(e));
         // Passes a list of objects/ entries frome entries.js
-        this.setState({entries: quiz.details});
         // Once the user pressed 
         // Also, it is placed in this component because 'window' object 
         // only available after 'render()' object gets render.
