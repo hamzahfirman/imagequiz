@@ -42,7 +42,15 @@ class Quiz extends React.Component {
             this.setState({score: score + 10});
             CHECKPOINT = false;
         }
-       reset();
+       reset();  
+       // PROPS from images.js
+       // 1.) username, 2.) quizId
+       const location = this.props.location;
+       var quizId = location.state.categoryId;
+       let username = location.state.username;
+
+       let newScore = {username: username, quizId: quizId, score: score};
+       server.pushAScore(newScore);
        this.setState({retry: false});
        this.setState({finished: true});
     }

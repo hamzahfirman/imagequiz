@@ -36,19 +36,6 @@ class Home extends React.Component {
 
   componentDidMount() {
 
-    // var catName = "";
-
-    // const location = this.props.location;
-    // // const cat = {
-    // //     flowers: 0,animals: 1,mathematics: 2};
-    // if(location) {
-    //     if(location.state){
-    //          if(location.state.categoryName){
-    //             catName = location.state.categoryName;
-    //             }
-    //       }
-    //  }
-
     // 'entries' - Calls a function 'fecthEntries()' in server.js component
     const quiz = server.fetchQuizzes().then(x => this.setState({quizzes: x})).catch(e => console.log(e));
     // Passes a list of objects/ entries frome entries.js
